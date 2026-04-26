@@ -14,7 +14,7 @@
 <!-- HEADER + MENU -->
 <header>
     <div class="logo">
-        <img src="icons/logo.svg" alt="Accent Musique">
+        <img src="icons/Logo.svg" alt="Accent Musique">
     </div>
 
     <nav class="nav-links">
@@ -31,21 +31,35 @@
 </header>
 
 
-
-<!-- HERO IMAGES -->
 <div class="hero">
 
-    <img class="slide active" 
-         src="https://www.flickr.com/photo_download.gne?id=55219437651&secret=c18de0e093&size=l&source=photoPageEngagement" 
-         alt="Photo 1">
+    <!-- SLIDE 1 -->
+    <div class="slide active">
+        <video autoplay muted loop playsinline>
+            <source src="videos/1.mp4" type="video/mp4">
+        </video>
+    </div>
 
-    <img class="slide" 
-         src="https://www.flickr.com/photo_download.gne?id=55219692019&secret=8980cde774&size=l&source=photoPageEngagement" 
-         alt="Photo 2">
+    <!-- SLIDE 2 -->
+    <div class="slide">
+        <video autoplay muted loop playsinline>
+            <source src="videos/2.mp4" type="video/mp4">
+        </video>
+    </div>
 
-    <img class="slide" 
-         src="https://www.flickr.com/photo_download.gne?id=55219839515&secret=8f28ddbde4&size=l&source=photoPageEngagement" 
-         alt="Photo 3">
+    <!-- SLIDE 3 -->
+    <div class="slide">
+        <video autoplay muted loop playsinline>
+            <source src="videos/3.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+        <video autoplay muted loop playsinline>
+            <source src="videos/4.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <div class="hero-overlay">
         <div>
@@ -55,6 +69,9 @@
     </div>
 
 </div>
+
+
+
 
 
 <!-- SECTION COURS -->
@@ -183,7 +200,7 @@
     </div>
 </footer>
 
-/*Pop up*/
+<!-- Pop up -->
 <div id="mentions-popup" class="mentions-hidden">
     <div class="mentions-content">
         <h2>Mentions légales</h2>
@@ -191,7 +208,7 @@
         <p>Téléphone : 06 95 12 52 11 – Email : accentmusique@gmail.com</p>
         <p>Responsable de publication : Frédéric Braud</p>
         <p>SIRET : 822 082 186 00013</p>
-        <p>Hébergement : (à compléter)</p>
+        <p></p>
 
         <button id="close-mentions">Fermer</button>
     </div>
@@ -205,26 +222,16 @@ const slides = document.querySelectorAll('.slide');
 let current = 0;
 
 function showSlide(index) {
-    slides[current].classList.remove('active');
-    slides[index].classList.add('active');
-    current = index;
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
 }
 
 setInterval(() => {
-    showSlide((current + 1) % slides.length);
-}, 5000);
-</script>
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}, 8000);
 
-<!-- BURGER MENU JS -->
-
-<script>
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-
-burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    nav.classList.toggle('active');
-});
 </script>
 
 <script>
@@ -239,6 +246,15 @@ openBtn.addEventListener('click', (e) => {
 
 closeBtn.addEventListener('click', () => {
     popup.classList.add('mentions-hidden');
+});
+</script>
+<script>
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    nav.classList.toggle('active');
 });
 </script>
 
